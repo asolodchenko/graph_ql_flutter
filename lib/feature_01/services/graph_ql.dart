@@ -1,3 +1,7 @@
+import 'package:MyProgect_01/app.dart';
+import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+
 // // ignore: import_of_legacy_library_into_null_safe
 // import 'package:graphql_flutter/graphql_flutter.dart';
 // import 'dart:developer' as dev;
@@ -40,3 +44,19 @@
 //     return result;
 //   }
 // }
+
+GraphQLProvider appGraphQLProvider() {
+  final HttpLink httpLink = HttpLink('https://api.spacex.land/graphql/');
+
+  ValueNotifier<GraphQLClient> client = ValueNotifier(
+    GraphQLClient(
+      link: httpLink,
+      cache: GraphQLCache(
+        store: InMemoryStore(),
+      ),
+    ),
+  );
+
+  var app = GraphQLProvider(client: client, child: MyApp());
+  return app;
+}

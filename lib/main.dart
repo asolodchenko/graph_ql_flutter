@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
+import 'feature_01/feature_01.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  GraphQLProvider app = appGraphQLProvider();
+
+  runApp(app);
+}
