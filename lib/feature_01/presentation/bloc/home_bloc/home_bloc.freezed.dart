@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HomeEventTearOff {
   const _$HomeEventTearOff();
 
-  _Started started() {
+  _Started fetchData() {
     return const _Started();
   }
 }
@@ -30,33 +30,33 @@ const $HomeEvent = _$HomeEventTearOff();
 mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Started value) fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Started value)? fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Started value)? fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -100,7 +100,7 @@ class _$_Started implements _Started {
 
   @override
   String toString() {
-    return 'HomeEvent.started()';
+    return 'HomeEvent.fetchData()';
   }
 
   @override
@@ -115,27 +115,27 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
+    required TResult Function() fetchData,
   }) {
-    return started();
+    return fetchData();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchData,
   }) {
-    return started?.call();
+    return fetchData?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
+    TResult Function()? fetchData,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started();
+    if (fetchData != null) {
+      return fetchData();
     }
     return orElse();
   }
@@ -143,27 +143,27 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
+    required TResult Function(_Started value) fetchData,
   }) {
-    return started(this);
+    return fetchData(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Started value)? fetchData,
   }) {
-    return started?.call(this);
+    return fetchData?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
+    TResult Function(_Started value)? fetchData,
     required TResult orElse(),
   }) {
-    if (started != null) {
-      return started(this);
+    if (fetchData != null) {
+      return fetchData(this);
     }
     return orElse();
   }
@@ -177,8 +177,24 @@ abstract class _Started implements HomeEvent {
 class _$HomeStateTearOff {
   const _$HomeStateTearOff();
 
-  _Initial initial() {
-    return const _Initial();
+  _HomeStateInitial initial() {
+    return const _HomeStateInitial();
+  }
+
+  _HomeStateLoading loading() {
+    return const _HomeStateLoading();
+  }
+
+  _HomeStateError error({required String errorMessage}) {
+    return _HomeStateError(
+      errorMessage: errorMessage,
+    );
+  }
+
+  _HomeStateLoadedData loadedData({required List<LaunchInfoEntity> launches}) {
+    return _HomeStateLoadedData(
+      launches: launches,
+    );
   }
 }
 
@@ -190,32 +206,50 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<LaunchInfoEntity> launches) loadedData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(_HomeStateLoading value) loading,
+    required TResult Function(_HomeStateError value) error,
+    required TResult Function(_HomeStateLoadedData value) loadedData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -237,25 +271,28 @@ class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
+abstract class _$HomeStateInitialCopyWith<$Res> {
+  factory _$HomeStateInitialCopyWith(
+          _HomeStateInitial value, $Res Function(_HomeStateInitial) then) =
+      __$HomeStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
+class __$HomeStateInitialCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$HomeStateInitialCopyWith<$Res> {
+  __$HomeStateInitialCopyWithImpl(
+      _HomeStateInitial _value, $Res Function(_HomeStateInitial) _then)
+      : super(_value, (v) => _then(v as _HomeStateInitial));
 
   @override
-  _Initial get _value => super._value as _Initial;
+  _HomeStateInitial get _value => super._value as _HomeStateInitial;
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$_HomeStateInitial implements _HomeStateInitial {
+  const _$_HomeStateInitial();
 
   @override
   String toString() {
@@ -265,7 +302,7 @@ class _$_Initial implements _Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Initial);
+        (other.runtimeType == runtimeType && other is _HomeStateInitial);
   }
 
   @override
@@ -275,6 +312,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<LaunchInfoEntity> launches) loadedData,
   }) {
     return initial();
   }
@@ -283,6 +323,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
   }) {
     return initial?.call();
   }
@@ -291,6 +334,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -302,7 +348,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
+    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(_HomeStateLoading value) loading,
+    required TResult Function(_HomeStateError value) error,
+    required TResult Function(_HomeStateLoadedData value) loadedData,
   }) {
     return initial(this);
   }
@@ -310,7 +359,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
   }) {
     return initial?.call(this);
   }
@@ -318,7 +370,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -328,6 +383,418 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements HomeState {
-  const factory _Initial() = _$_Initial;
+abstract class _HomeStateInitial implements HomeState {
+  const factory _HomeStateInitial() = _$_HomeStateInitial;
+}
+
+/// @nodoc
+abstract class _$HomeStateLoadingCopyWith<$Res> {
+  factory _$HomeStateLoadingCopyWith(
+          _HomeStateLoading value, $Res Function(_HomeStateLoading) then) =
+      __$HomeStateLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$HomeStateLoadingCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$HomeStateLoadingCopyWith<$Res> {
+  __$HomeStateLoadingCopyWithImpl(
+      _HomeStateLoading _value, $Res Function(_HomeStateLoading) _then)
+      : super(_value, (v) => _then(v as _HomeStateLoading));
+
+  @override
+  _HomeStateLoading get _value => super._value as _HomeStateLoading;
+}
+
+/// @nodoc
+
+class _$_HomeStateLoading implements _HomeStateLoading {
+  const _$_HomeStateLoading();
+
+  @override
+  String toString() {
+    return 'HomeState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _HomeStateLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<LaunchInfoEntity> launches) loadedData,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(_HomeStateLoading value) loading,
+    required TResult Function(_HomeStateError value) error,
+    required TResult Function(_HomeStateLoadedData value) loadedData,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HomeStateLoading implements HomeState {
+  const factory _HomeStateLoading() = _$_HomeStateLoading;
+}
+
+/// @nodoc
+abstract class _$HomeStateErrorCopyWith<$Res> {
+  factory _$HomeStateErrorCopyWith(
+          _HomeStateError value, $Res Function(_HomeStateError) then) =
+      __$HomeStateErrorCopyWithImpl<$Res>;
+  $Res call({String errorMessage});
+}
+
+/// @nodoc
+class __$HomeStateErrorCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
+    implements _$HomeStateErrorCopyWith<$Res> {
+  __$HomeStateErrorCopyWithImpl(
+      _HomeStateError _value, $Res Function(_HomeStateError) _then)
+      : super(_value, (v) => _then(v as _HomeStateError));
+
+  @override
+  _HomeStateError get _value => super._value as _HomeStateError;
+
+  @override
+  $Res call({
+    Object? errorMessage = freezed,
+  }) {
+    return _then(_HomeStateError(
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_HomeStateError implements _HomeStateError {
+  const _$_HomeStateError({required this.errorMessage});
+
+  @override
+  final String errorMessage;
+
+  @override
+  String toString() {
+    return 'HomeState.error(errorMessage: $errorMessage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _HomeStateError &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
+
+  @JsonKey(ignore: true)
+  @override
+  _$HomeStateErrorCopyWith<_HomeStateError> get copyWith =>
+      __$HomeStateErrorCopyWithImpl<_HomeStateError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<LaunchInfoEntity> launches) loadedData,
+  }) {
+    return error(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+  }) {
+    return error?.call(errorMessage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(errorMessage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(_HomeStateLoading value) loading,
+    required TResult Function(_HomeStateError value) error,
+    required TResult Function(_HomeStateLoadedData value) loadedData,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HomeStateError implements HomeState {
+  const factory _HomeStateError({required String errorMessage}) =
+      _$_HomeStateError;
+
+  String get errorMessage;
+  @JsonKey(ignore: true)
+  _$HomeStateErrorCopyWith<_HomeStateError> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$HomeStateLoadedDataCopyWith<$Res> {
+  factory _$HomeStateLoadedDataCopyWith(_HomeStateLoadedData value,
+          $Res Function(_HomeStateLoadedData) then) =
+      __$HomeStateLoadedDataCopyWithImpl<$Res>;
+  $Res call({List<LaunchInfoEntity> launches});
+}
+
+/// @nodoc
+class __$HomeStateLoadedDataCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res>
+    implements _$HomeStateLoadedDataCopyWith<$Res> {
+  __$HomeStateLoadedDataCopyWithImpl(
+      _HomeStateLoadedData _value, $Res Function(_HomeStateLoadedData) _then)
+      : super(_value, (v) => _then(v as _HomeStateLoadedData));
+
+  @override
+  _HomeStateLoadedData get _value => super._value as _HomeStateLoadedData;
+
+  @override
+  $Res call({
+    Object? launches = freezed,
+  }) {
+    return _then(_HomeStateLoadedData(
+      launches: launches == freezed
+          ? _value.launches
+          : launches // ignore: cast_nullable_to_non_nullable
+              as List<LaunchInfoEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_HomeStateLoadedData implements _HomeStateLoadedData {
+  const _$_HomeStateLoadedData({required this.launches});
+
+  @override
+  final List<LaunchInfoEntity> launches;
+
+  @override
+  String toString() {
+    return 'HomeState.loadedData(launches: $launches)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _HomeStateLoadedData &&
+            const DeepCollectionEquality().equals(other.launches, launches));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(launches));
+
+  @JsonKey(ignore: true)
+  @override
+  _$HomeStateLoadedDataCopyWith<_HomeStateLoadedData> get copyWith =>
+      __$HomeStateLoadedDataCopyWithImpl<_HomeStateLoadedData>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String errorMessage) error,
+    required TResult Function(List<LaunchInfoEntity> launches) loadedData,
+  }) {
+    return loadedData(launches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+  }) {
+    return loadedData?.call(launches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String errorMessage)? error,
+    TResult Function(List<LaunchInfoEntity> launches)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (loadedData != null) {
+      return loadedData(launches);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_HomeStateInitial value) initial,
+    required TResult Function(_HomeStateLoading value) loading,
+    required TResult Function(_HomeStateError value) error,
+    required TResult Function(_HomeStateLoadedData value) loadedData,
+  }) {
+    return loadedData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+  }) {
+    return loadedData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_HomeStateInitial value)? initial,
+    TResult Function(_HomeStateLoading value)? loading,
+    TResult Function(_HomeStateError value)? error,
+    TResult Function(_HomeStateLoadedData value)? loadedData,
+    required TResult orElse(),
+  }) {
+    if (loadedData != null) {
+      return loadedData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HomeStateLoadedData implements HomeState {
+  const factory _HomeStateLoadedData(
+      {required List<LaunchInfoEntity> launches}) = _$_HomeStateLoadedData;
+
+  List<LaunchInfoEntity> get launches;
+  @JsonKey(ignore: true)
+  _$HomeStateLoadedDataCopyWith<_HomeStateLoadedData> get copyWith =>
+      throw _privateConstructorUsedError;
 }

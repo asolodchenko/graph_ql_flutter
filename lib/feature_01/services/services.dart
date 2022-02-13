@@ -1,2 +1,2 @@
-export 'graph_ql.dart';
-export 'graph_ql_request.dart';
+export 'graph_ql/graph_ql_provider.dart';
+export 'graph_ql/graph_ql_requests.dart';

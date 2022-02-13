@@ -11,7 +11,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const HomePage(),
+      // home: const HomePage(),
+      home: Center(child: Text('test')),
     );
   }
 }

@@ -2,8 +2,6 @@ import 'package:MyProgect_01/feature_01/feature_01.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
-import 'dart:developer' as dev;
-
 class HomePage extends StatelessWidget {
   const HomePage({
     Key? key,
@@ -14,7 +12,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Query(
-          options: QueryOptions(document: gql(GqlRequests.launchesPast)),
+          options: QueryOptions(document: gql(GqlQueries.launchesPast)),
           builder: (QueryResult result, {fetchMore, refetch}) {
             if (result.hasException) {
               return Text(
@@ -28,15 +26,19 @@ class HomePage extends StatelessWidget {
             }
 
             final resultList = result.data!['launches'] as List;
-            dev.log(resultList.toString());
+
             return ListView.builder(
               itemCount: resultList.length,
               itemBuilder: (context, index) {
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      Text(resultList[index]['mission_name'] ?? 'no data'),
+                      Text(
+                        resultList[index]['mission_name'] ?? 'no data',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 8),
                       Text(resultList[index]['details'] ?? 'no data'),
                     ],
                   ),
