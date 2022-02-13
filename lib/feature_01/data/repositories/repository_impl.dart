@@ -10,7 +10,7 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
   @override
   Stream<List<LaunchInfoEntity>> getLaunches(Params params) async* {
     final query = GqlQueries.launchesPast;
-    final launchInfoEntities = <LaunchInfoEntity>[];
+    List<LaunchInfoEntity> launchInfoEntities = [];
 
     final result = await client.performQuery(query, variables: {});
 
@@ -18,16 +18,18 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
       dev.log(result.exception!.graphqlErrors.first.toString());
     }
 
-    for (final launch in result.data!['launches']) {
-      dev.log(launch['mission_name'].toString());
+    if (result.data!.isNotEmpty) {
+      for (final launch in result.data!['launches']) {
+        launchInfoEntities.add(LaunchInfoEntity(
+          title: launch['mission_name'] ?? '',
+          info: launch['details'] ?? '',
+        ));
+      }
 
-      launchInfoEntities.add(LaunchInfoEntity(
-        title: launch['mission_name'] ?? 'no data',
-        info: launch['details'] ?? 'no data',
-      ));
+      yield launchInfoEntities;
+    } else {
+      throw ServerFailure('Datasourse is unavailable');
     }
-
-    yield launchInfoEntities;
   }
 }
 

@@ -21,7 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
 
     try {
-      final launchStream = getLaunchesUseCase.call(Params(
+      final launchStream =  getLaunchesUseCase.call(Params(
         textToSeach: '',
         int: 10,
       ));
