@@ -1,6 +1,5 @@
-import 'package:MyProgect_01/feature_01/data/repositories/repository_impl.dart';
-import 'package:MyProgect_01/feature_01/feature_01.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter_graphQl/feature_01/feature_01.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'home_event.dart';
@@ -21,9 +20,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
 
     try {
-      final launchStream =  getLaunchesUseCase.call(Params(
-        textToSeach: '',
-        int: 10,
+      final launchStream = getLaunchesUseCase.call(Params(
+        limit: 10,
+        search: '',
       ));
 
       await emit.forEach(

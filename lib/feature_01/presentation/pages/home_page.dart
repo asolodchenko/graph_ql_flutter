@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:MyProgect_01/feature_01/feature_01.dart';
-import 'dart:developer' as dev;
+import 'package:flutter_graphQl/feature_01/feature_01.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -24,6 +23,9 @@ class HomePage extends StatelessWidget {
                 error: (error) =>
                     Center(child: Text(error.errorMessage.toString())),
                 loadedData: (data) {
+                  if (data.launches.isEmpty) {
+                    return Center(child: Text('There is no items...'));
+                  }
                   return ListView.builder(
                     itemCount: data.launches.length,
                     itemBuilder: (context, index) {
@@ -38,45 +40,5 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-    // return Scaffold(
-    //   body: Center(
-    //     child: Query(
-    //       options: QueryOptions(document: gql(GqlQueries.launchesPast)),
-    //       builder: (QueryResult result, {fetchMore, refetch}) {
-    //         if (result.hasException) {
-    //           return Text(
-    //             result.exception.toString(),
-    //             style: TextStyle(color: Colors.red),
-    //           );
-    //         }
-
-    //         if (result.isLoading) {
-    //           return Center(child: CircularProgressIndicator());
-    //         }
-
-    //         final resultList = result.data!['launches'] as List;
-
-    //         return ListView.builder(
-    //           itemCount: resultList.length,
-    //           itemBuilder: (context, index) {
-    //             return Padding(
-    //               padding: const EdgeInsets.all(16.0),
-    //               child: Column(
-    //                 children: [
-    //                   Text(
-    //                     resultList[index]['mission_name'] ?? 'no data',
-    //                     style: TextStyle(fontWeight: FontWeight.bold),
-    //                   ),
-    //                   const SizedBox(height: 8),
-    //                   Text(resultList[index]['details'] ?? 'no data'),
-    //                 ],
-    //               ),
-    //             );
-    //           },
-    //         );
-    //       },
-    //     ),
-    //   ),
-    // );
   }
 }

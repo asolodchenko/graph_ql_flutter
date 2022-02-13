@@ -1,6 +1,7 @@
-import 'package:MyProgect_01/feature_01/data/repositories/repository_impl.dart';
-import 'package:MyProgect_01/feature_01/feature_01.dart';
+import 'package:flutter_graphQl/feature_01/feature_01.dart';
 import 'package:get_it/get_it.dart';
+
+import 'data/repositories/repositories.dart';
 
 final sl = GetIt.instance;
 

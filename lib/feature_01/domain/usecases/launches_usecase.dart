@@ -1,4 +1,4 @@
-import 'package:MyProgect_01/feature_01/feature_01.dart';
+import 'package:flutter_graphQl/feature_01/feature_01.dart';
 
 class GetLaunchesUseCase {
   final LaunchesRepository repository;
@@ -9,8 +9,7 @@ class GetLaunchesUseCase {
 }
 
 class Params {
-  final String textToSeach;
-  final int;
-
-  Params({required this.textToSeach, required this.int});
+  final int limit;
+  final String search;
+  Params({required this.limit, required this.search});
 }

@@ -1,5 +1,4 @@
-import 'package:MyProgect_01/feature_01/feature_01.dart';
-
+import 'package:flutter_graphQl/feature_01/feature_01.dart';
 import 'dart:developer' as dev;
 
 class LaunchesRepositoryImpl extends LaunchesRepository {
@@ -12,7 +11,10 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
     final query = GqlQueries.launchesPast;
     List<LaunchInfoEntity> launchInfoEntities = [];
 
-    final result = await client.performQuery(query, variables: {});
+    final result = await client.performQuery(query, variables: {
+      'limit': params.limit,
+      'search': params.search,
+    });
 
     if (result.hasException) {
       dev.log(result.exception!.graphqlErrors.first.toString());
@@ -31,14 +33,4 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
       throw ServerFailure('Datasourse is unavailable');
     }
   }
-}
-
-abstract class Failure {
-  final String message;
-
-  Failure(this.message);
-}
-
-class ServerFailure extends Failure {
-  ServerFailure(String message) : super(message);
 }
