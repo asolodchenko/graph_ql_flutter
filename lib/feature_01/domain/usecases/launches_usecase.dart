@@ -1,12 +1,11 @@
 import 'package:MyProgect_01/feature_01/feature_01.dart';
 
 class GetLaunchesUseCase {
-  final LaunchesRepository _repository;
+  final LaunchesRepository repository;
 
-  GetLaunchesUseCase({required repository}) : _repository = repository;
+  GetLaunchesUseCase({required this.repository});
 
-  @override
-  call(Params params) => _repository.getLaunches(params);
+  call(Params params) => repository.getLaunches(params);
 }
 
 class Params {

@@ -1,7 +1,5 @@
-import 'package:MyProgect_01/app.dart';
-import 'package:MyProgect_01/feature_01/feature_01.dart';
-import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'graph_ql_requests.dart';
 
 class GraphQLService {
   GraphQLClient? _client;
@@ -21,29 +19,33 @@ class GraphQLService {
     String query, {
     required Map<String, dynamic> variables,
   }) async {
-    QueryOptions options = QueryOptions(
+    MutationOptions options = MutationOptions(
       document: gql(GqlQueries.launchesPast),
       variables: variables,
     );
 
-    final result = await _client!.query(options);
+    final result = await _client!.mutate(options);
 
     return result;
   }
 }
 
-GraphQLProvider appGraphQLProvider() {
-  final HttpLink httpLink = HttpLink('https://api.spacex.land/graphql/');
 
-  ValueNotifier<GraphQLClient> client = ValueNotifier(
-    GraphQLClient(
-      link: httpLink,
-      cache: GraphQLCache(
-        store: InMemoryStore(),
-      ),
-    ),
-  );
 
-  var app = GraphQLProvider(client: client, child: MyApp());
-  return app;
-}
+
+
+// GraphQLProvider appGraphQLProvider() {
+//   final HttpLink httpLink = HttpLink('https://api.spacex.land/graphql/');
+
+//   ValueNotifier<GraphQLClient> client = ValueNotifier(
+//     GraphQLClient(
+//       link: httpLink,
+//       cache: GraphQLCache(
+//         store: InMemoryStore(),
+//       ),
+//     ),
+//   );
+
+//   var app = GraphQLProvider(client: client, child: MyApp());
+//   return app;
+// }

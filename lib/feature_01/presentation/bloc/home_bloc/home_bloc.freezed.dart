@@ -18,8 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HomeEventTearOff {
   const _$HomeEventTearOff();
 
-  _Started fetchData() {
-    return const _Started();
+  _FetchData fetchData() {
+    return const _FetchData();
   }
 }
 
@@ -46,17 +46,17 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) fetchData,
+    required TResult Function(_FetchData value) fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? fetchData,
+    TResult Function(_FetchData value)? fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? fetchData,
+    TResult Function(_FetchData value)? fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,25 +78,26 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$StartedCopyWith<$Res> {
-  factory _$StartedCopyWith(_Started value, $Res Function(_Started) then) =
-      __$StartedCopyWithImpl<$Res>;
+abstract class _$FetchDataCopyWith<$Res> {
+  factory _$FetchDataCopyWith(
+          _FetchData value, $Res Function(_FetchData) then) =
+      __$FetchDataCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$StartedCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
-    implements _$StartedCopyWith<$Res> {
-  __$StartedCopyWithImpl(_Started _value, $Res Function(_Started) _then)
-      : super(_value, (v) => _then(v as _Started));
+class __$FetchDataCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
+    implements _$FetchDataCopyWith<$Res> {
+  __$FetchDataCopyWithImpl(_FetchData _value, $Res Function(_FetchData) _then)
+      : super(_value, (v) => _then(v as _FetchData));
 
   @override
-  _Started get _value => super._value as _Started;
+  _FetchData get _value => super._value as _FetchData;
 }
 
 /// @nodoc
 
-class _$_Started implements _Started {
-  const _$_Started();
+class _$_FetchData implements _FetchData {
+  const _$_FetchData();
 
   @override
   String toString() {
@@ -106,7 +107,7 @@ class _$_Started implements _Started {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _Started);
+        (other.runtimeType == runtimeType && other is _FetchData);
   }
 
   @override
@@ -143,7 +144,7 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) fetchData,
+    required TResult Function(_FetchData value) fetchData,
   }) {
     return fetchData(this);
   }
@@ -151,7 +152,7 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Started value)? fetchData,
+    TResult Function(_FetchData value)? fetchData,
   }) {
     return fetchData?.call(this);
   }
@@ -159,7 +160,7 @@ class _$_Started implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? fetchData,
+    TResult Function(_FetchData value)? fetchData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
@@ -169,8 +170,8 @@ class _$_Started implements _Started {
   }
 }
 
-abstract class _Started implements HomeEvent {
-  const factory _Started() = _$_Started;
+abstract class _FetchData implements HomeEvent {
+  const factory _FetchData() = _$_FetchData;
 }
 
 /// @nodoc

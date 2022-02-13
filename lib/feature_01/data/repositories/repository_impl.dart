@@ -8,7 +8,7 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
   LaunchesRepositoryImpl({required this.client});
 
   @override
-  Future<List<LaunchInfoEntity>> getLaunches(Params params) async {
+  Stream<List<LaunchInfoEntity>> getLaunches(Params params) async* {
     final query = GqlQueries.launchesPast;
     final launchInfoEntities = <LaunchInfoEntity>[];
 
@@ -20,16 +20,23 @@ class LaunchesRepositoryImpl extends LaunchesRepository {
 
     for (final launch in result.data!['launches']) {
       dev.log(launch['mission_name'].toString());
-      dev.log(launch['details'].toString());
 
       launchInfoEntities.add(LaunchInfoEntity(
-        title: launch['mission_name'],
-        info: launch['details'],
+        title: launch['mission_name'] ?? 'no data',
+        info: launch['details'] ?? 'no data',
       ));
     }
 
-    // return result.data!['launches'];
-
-    return launchInfoEntities;
+    yield launchInfoEntities;
   }
+}
+
+abstract class Failure {
+  final String message;
+
+  Failure(this.message);
+}
+
+class ServerFailure extends Failure {
+  ServerFailure(String message) : super(message);
 }

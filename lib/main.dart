@@ -1,15 +1,12 @@
 import 'package:MyProgect_01/app.dart';
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
-import 'feature_01/data/repositories/repository_impl.dart';
-import 'feature_01/feature_01.dart';
 
-void main() {
-  // GraphQLProvider app = appGraphQLProvider();
-  // runApp(app);
+import 'feature_01/services/di_injection.dart' as di;
 
-  LaunchesRepositoryImpl(client: GraphQLService()).getLaunches(
-    Params(int: 10, textToSeach: ''),
-  );
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await di.init();
+
   runApp(MyApp());
 }
