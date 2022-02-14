@@ -22,7 +22,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final launchStream = getLaunchesUseCase.call(Params(
         limit: 10,
-        search: '',
+        search: event.searchText,
       ));
 
       await emit.forEach(

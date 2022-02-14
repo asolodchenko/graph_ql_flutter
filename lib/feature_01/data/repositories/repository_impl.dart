@@ -1,6 +1,8 @@
 import 'package:flutter_graphQl/feature_01/feature_01.dart';
 import 'dart:developer' as dev;
 
+import 'package:graphql_flutter/graphql_flutter.dart';
+
 class LaunchesRepositoryImpl extends LaunchesRepository {
   final GraphQLService client;
 

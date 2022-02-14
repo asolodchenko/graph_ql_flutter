@@ -18,8 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$HomeEventTearOff {
   const _$HomeEventTearOff();
 
-  _FetchData fetchData() {
-    return const _FetchData();
+  _FetchData fetchData({required String searchText}) {
+    return _FetchData(
+      searchText: searchText,
+    );
   }
 }
 
@@ -28,19 +30,21 @@ const $HomeEvent = _$HomeEventTearOff();
 
 /// @nodoc
 mixin _$HomeEvent {
+  String get searchText => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchData,
+    required TResult Function(String searchText) fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchData,
+    TResult Function(String searchText)? fetchData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchData,
+    TResult Function(String searchText)? fetchData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -60,12 +64,17 @@ mixin _$HomeEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeEventCopyWith<HomeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeEventCopyWith<$Res> {
   factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
       _$HomeEventCopyWithImpl<$Res>;
+  $Res call({String searchText});
 }
 
 /// @nodoc
@@ -75,13 +84,27 @@ class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
   final HomeEvent _value;
   // ignore: unused_field
   final $Res Function(HomeEvent) _then;
+
+  @override
+  $Res call({
+    Object? searchText = freezed,
+  }) {
+    return _then(_value.copyWith(
+      searchText: searchText == freezed
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$FetchDataCopyWith<$Res> {
+abstract class _$FetchDataCopyWith<$Res> implements $HomeEventCopyWith<$Res> {
   factory _$FetchDataCopyWith(
           _FetchData value, $Res Function(_FetchData) then) =
       __$FetchDataCopyWithImpl<$Res>;
+  @override
+  $Res call({String searchText});
 }
 
 /// @nodoc
@@ -92,51 +115,75 @@ class __$FetchDataCopyWithImpl<$Res> extends _$HomeEventCopyWithImpl<$Res>
 
   @override
   _FetchData get _value => super._value as _FetchData;
+
+  @override
+  $Res call({
+    Object? searchText = freezed,
+  }) {
+    return _then(_FetchData(
+      searchText: searchText == freezed
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_FetchData implements _FetchData {
-  const _$_FetchData();
+  const _$_FetchData({required this.searchText});
+
+  @override
+  final String searchText;
 
   @override
   String toString() {
-    return 'HomeEvent.fetchData()';
+    return 'HomeEvent.fetchData(searchText: $searchText)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _FetchData);
+        (other.runtimeType == runtimeType &&
+            other is _FetchData &&
+            const DeepCollectionEquality()
+                .equals(other.searchText, searchText));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(searchText));
+
+  @JsonKey(ignore: true)
+  @override
+  _$FetchDataCopyWith<_FetchData> get copyWith =>
+      __$FetchDataCopyWithImpl<_FetchData>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchData,
+    required TResult Function(String searchText) fetchData,
   }) {
-    return fetchData();
+    return fetchData(searchText);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? fetchData,
+    TResult Function(String searchText)? fetchData,
   }) {
-    return fetchData?.call();
+    return fetchData?.call(searchText);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchData,
+    TResult Function(String searchText)? fetchData,
     required TResult orElse(),
   }) {
     if (fetchData != null) {
-      return fetchData();
+      return fetchData(searchText);
     }
     return orElse();
   }
@@ -171,7 +218,14 @@ class _$_FetchData implements _FetchData {
 }
 
 abstract class _FetchData implements HomeEvent {
-  const factory _FetchData() = _$_FetchData;
+  const factory _FetchData({required String searchText}) = _$_FetchData;
+
+  @override
+  String get searchText;
+  @override
+  @JsonKey(ignore: true)
+  _$FetchDataCopyWith<_FetchData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

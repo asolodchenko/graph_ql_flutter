@@ -9,6 +9,7 @@ class HomeState with _$HomeState {
   const factory HomeState.error({required String errorMessage}) =
       _HomeStateError;
 
-  const factory HomeState.loadedData(
-      {required List<LaunchInfoEntity> launches}) = _HomeStateLoadedData;
+  const factory HomeState.loadedData({
+    required List<LaunchInfoEntity> launches,
+  }) = _HomeStateLoadedData;
 }
